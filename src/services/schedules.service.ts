@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from "@nestjs/common"
-import type { PrismaService } from "../prisma/prisma.service"
-import type { CreateScheduleDto } from "src/DTOs/create-schedule.dto"
-import type { UpdateScheduleDto } from "src/DTOs/update-schedule.dto"
+import { Injectable, NotFoundException } from '@nestjs/common'
+import type { PrismaService } from '../config/database/prisma/prisma.service'
+import type { CreateScheduleDto } from 'src/DTOs/create-schedule.dto'
+import type { UpdateScheduleDto } from 'src/DTOs/update-schedule.dto'
 
 @Injectable()
 export class SchedulesService {
@@ -9,10 +9,10 @@ export class SchedulesService {
 
   async addSchedule(createScheduleDto: CreateScheduleDto) {
     await this.prisma.schedule.create({
-      data: createScheduleDto,
+      data: createScheduleDto
     })
 
-    return { message: "Agenda adicionada com sucesso!" }
+    return { message: 'Agenda adicionada com sucesso!' }
   }
 
   async editSchedule(updateScheduleDto: UpdateScheduleDto) {
@@ -20,22 +20,23 @@ export class SchedulesService {
 
     await this.prisma.schedule.update({
       where: { id },
-      data,
+      data
     })
 
-    return { message: "Agenda editada com sucesso!" }
+    return { message: 'Agenda editada com sucesso!' }
   }
 
   async getSchedules(userId: number) {
     const schedules = await this.prisma.schedule.findMany({
-      where: { userId },
+      where: { userId }
     })
 
     if (schedules.length === 0) {
-      throw new NotFoundException("Nenhum cronograma encontrado para o usuário.")
+      throw new NotFoundException(
+        'Nenhum cronograma encontrado para o usuário.'
+      )
     }
 
     return schedules
   }
 }
-

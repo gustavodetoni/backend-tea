@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:3000/api
+@authToken = {{login.response.body.token}}
+
+### Register a new user
+# @name register
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+  "userTypeId": 1,
+  "especialidade": "Psicologia",
+  "name": "Terapeuta Teste",
+  "email": "terapeuta@example.com",
+  "phone": "11999999999",
+  "senha": "senha123"
+}
+
+### Register a patient
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+  "userTypeId": 2,
+  "name": "Paciente Teste",
+  "email": "paciente@example.com",
+  "phone": "11988888888",
+  "childName": "Filho Teste",
+  "childGender": "Masculino",
+  "childBirthdate": "2015-01-01T00:00:00.000Z",
+  "senha": "senha123"
+}
+
+### Login
+# @name login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "terapeuta@example.com",
+  "senha": "senha123"
+}

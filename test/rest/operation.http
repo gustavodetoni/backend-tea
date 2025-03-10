@@ -1,0 +1,103 @@
+@baseUrl = http://localhost:3333/api
+@authToken = {{login.response.body.token}}
+
+### Login
+# @name login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "terapeuta@example.com",
+  "senha": "senha123"
+}
+
+### Get user by ID
+GET {{baseUrl}}/usuario/1
+Authorization: Bearer {{authToken}}
+
+### Add schedule
+POST {{baseUrl}}/cronograma
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "week1": "Atividade 1",
+  "week2": "Atividade 2",
+  "week3": "Atividade 3",
+  "week4": "Atividade 4",
+  "week5": "Atividade 5",
+  "week6": "Atividade 6",
+  "week7": "Atividade 7",
+  "week8": "Atividade 8",
+  "mensagem": "Observações gerais"
+}
+
+### Edit schedule
+PUT {{baseUrl}}/cronograma
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "week1": "Atividade 1 atualizada",
+  "week2": "Atividade 2 atualizada",
+  "week3": "Atividade 3 atualizada",
+  "week4": "Atividade 4 atualizada",
+  "week5": "Atividade 5 atualizada",
+  "week6": "Atividade 6 atualizada",
+  "week7": "Atividade 7 atualizada",
+  "week8": "Atividade 8 atualizada",
+  "mensagem": "Observações gerais atualizadas"
+}
+
+### Get schedules by user ID
+GET {{baseUrl}}/cronograma/1
+Authorization: Bearer {{authToken}}
+
+### Get all patients
+GET {{baseUrl}}/pacientes
+Authorization: Bearer {{authToken}}
+
+### Ask new friendship
+POST {{baseUrl}}/request
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "therapistId": 1,
+  "patientId": 2
+}
+
+### Decline friendship
+DELETE {{baseUrl}}/request/1
+Authorization: Bearer {{authToken}}
+
+### Accept friend request
+POST {{baseUrl}}/pacientes
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "therapistId": 1,
+  "patientId": 2
+}
+
+### Get pending friend requests for therapist
+GET {{baseUrl}}/pacientes/1?userTypeId=1
+Authorization: Bearer {{authToken}}
+
+### Get pending friend requests for patient
+GET {{baseUrl}}/pacientes/2?userTypeId=2
+Authorization: Bearer {{authToken}}
+
+### Send contact email
+POST {{baseUrl}}/contato
+Content-Type: application/json
+
+{
+  "name": "Nome do Contato",
+  "email": "contato@example.com",
+  "subject": "Assunto do Contato",
+  "message": "Mensagem de contato para teste."
+}
