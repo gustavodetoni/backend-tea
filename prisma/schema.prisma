@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  userTypeId      Int       @map("user_type_id")
+  especialidade   String?
+  name            String
+  email           String    @unique
+  phone           String?
+  childName       String?   @map("child_name")
+  childGender     String?   @map("child_gender")
+  childBirthdate  DateTime? @map("child_birthdate")
+  senha           String
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  therapistRelations TherapistPatient[] @relation("Therapist")
+  patientRelations   TherapistPatient[] @relation("Patient")
+  schedules          Schedule[]
+
+  @@map("users")
+}
+
+model TherapistPatient {
+  id          Int      @id @default(autoincrement())
+  therapistId Int      @map("therapist_id")
+  patientId   Int      @map("patient_id")
+  status      String   @default("pendente")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  therapist   User     @relation("Therapist", fields: [therapistId], references: [id])
+  patient     User     @relation("Patient", fields: [patientId], references: [id])
+
+  @@map("therapist_patient")
+}
+
+model Schedule {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  week1     String?  @map("week_1")
+  week2     String?  @map("week_2")
+  week3     String?  @map("week_3")
+  week4     String?  @map("week_4")
+  week5     String?  @map("week_5")
+  week6     String?  @map("week_6")
+  week7     String?  @map("week_7")
+  week8     String?  @map("week_8")
+  mensagem  String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("schedules")
+}
