@@ -1,7 +1,8 @@
 ### Endpoints
 
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login and get JWT token
+- `GET /api/health` - Health Check 
+- `POST /api/register` - Register a new user
+- `POST /api/login` - Login and get JWT token
 - `GET /api/usuario/:id` - Get user by ID
 - `POST /api/cronograma` - Add a new schedule
 - `PUT /api/cronograma` - Edit an existing schedule

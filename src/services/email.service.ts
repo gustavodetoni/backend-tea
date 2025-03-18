@@ -1,8 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common'
-import type { ConfigService } from '@nestjs/config'
+import { ConfigService } from '@nestjs/config'
 import * as nodemailer from 'nodemailer'
-import type { ContactEmailDto } from 'src/DTOs/contact-email.dto'
-
+import { ContactEmailDto } from 'src/DTOs/contact-email.dto'
 @Injectable()
 export class EmailService {
   private transporter: nodemailer.Transporter

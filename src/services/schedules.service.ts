@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
-import type { PrismaService } from '../config/database/prisma/prisma.service'
-import type { CreateScheduleDto } from 'src/DTOs/create-schedule.dto'
-import type { UpdateScheduleDto } from 'src/DTOs/update-schedule.dto'
+import { PrismaService } from '../config/database/prisma/prisma.service'
+import  { CreateScheduleDto } from 'src/DTOs/create-schedule.dto'
+import  { UpdateScheduleDto } from 'src/DTOs/update-schedule.dto'
 
 @Injectable()
 export class SchedulesService {

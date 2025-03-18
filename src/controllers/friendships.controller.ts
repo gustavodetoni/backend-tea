@@ -8,10 +8,10 @@ import {
   Query,
   UseGuards
 } from '@nestjs/common'
-import type { FriendshipsService } from 'src/services/friendships.service'
+import { FriendshipsService } from 'src/services/friendships.service'
 import { JwtAuthGuard } from 'src/config/auth/jwt-auth.guard'
-import type { CreateFriendshipDto } from 'src/DTOs/create-friendship.dto'
-import type { AcceptFriendshipDto } from 'src/DTOs/accept-friendship.dto'
+import { CreateFriendshipDto } from 'src/DTOs/create-friendship.dto'
+import { AcceptFriendshipDto } from 'src/DTOs/accept-friendship.dto'
 
 @Controller()
 export class FriendshipsController {

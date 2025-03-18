@@ -4,10 +4,10 @@ import {
   NotFoundException,
   UnauthorizedException
 } from '@nestjs/common'
-import type { JwtService } from '@nestjs/jwt'
-import type { PrismaService } from '../config/database/prisma/prisma.service'
-import type { RegisterDto } from 'src/DTOs/register.dto'
-import type { LoginDto } from 'src/DTOs/login.dto'
+import { JwtService } from '@nestjs/jwt'
+import { PrismaService } from '../config/database/prisma/prisma.service'
+import { RegisterDto } from 'src/DTOs/register.dto'
+import { LoginDto } from 'src/DTOs/login.dto'
 import * as bcrypt from 'bcryptjs'
 
 @Injectable()

@@ -3,9 +3,9 @@ import {
   BadRequestException,
   NotFoundException
 } from '@nestjs/common'
-import type { PrismaService } from '../config/database/prisma/prisma.service'
-import type { CreateFriendshipDto } from 'src/DTOs/create-friendship.dto'
-import type { AcceptFriendshipDto } from 'src/DTOs/accept-friendship.dto'
+import { PrismaService } from '../config/database/prisma/prisma.service'
+import { CreateFriendshipDto } from 'src/DTOs/create-friendship.dto'
+import { AcceptFriendshipDto } from 'src/DTOs/accept-friendship.dto'
 
 @Injectable()
 export class FriendshipsService {

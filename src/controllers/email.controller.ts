@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common'
-import type { EmailService } from 'src/services/email.service'
-import type { ContactEmailDto } from 'src/DTOs/contact-email.dto'
+import { EmailService } from 'src/services/email.service'
+import { ContactEmailDto } from 'src/DTOs/contact-email.dto'
 
 @Controller()
 export class EmailController {

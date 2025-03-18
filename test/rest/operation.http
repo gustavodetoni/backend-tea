@@ -21,7 +21,7 @@ Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
-  "userId": 1,
+  "userId": 2,
   "week1": "Atividade 1",
   "week2": "Atividade 2",
   "week3": "Atividade 3",
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Get schedules by user ID
-GET {{baseUrl}}/cronograma/1
+GET {{baseUrl}}/cronograma/2
 Authorization: Bearer {{authToken}}
 
 ### Get all patients
